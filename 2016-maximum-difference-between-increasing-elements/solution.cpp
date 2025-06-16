@@ -17,7 +17,7 @@ public:
     
 };
 
-#Another Solution
+# Another Solution
 
 class Solution {
 public:
