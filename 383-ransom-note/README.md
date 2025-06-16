@@ -1,19 +1,19 @@
-🧠 Intuition
-I wanted to check if the magazine had enough of each letter needed in the ransom note. A hash map made it easy to track and compare frequencies.
+# 383. Ransom Note
 
-🔍 Approach
-Count how many times each letter appears in ransomNote using a hash map
+## 🧠 Intuition  
+My first thought was to count how many times each letter appears in the `ransomNote`, and then check if the `magazine` contains enough of each required letter. A hash map makes this process efficient.
 
-Subtract the count using letters in magazine
+## 🔍 Approach  
+1. Count the frequency of each character in `ransomNote` using a hash map  
+2. Loop through `magazine`, and subtract each character from the map  
+3. After processing, if any character count is still ≥ 1, return `false`  
+4. If all counts are ≤ 0, return `true`
 
-If any count is still ≥ 1 after processing, return false
+## ⏱️ Complexity  
+- **Time complexity:** O(n + m)  
+  n = length of `ransomNote`, m = length of `magazine`  
+- **Space complexity:** O(1)  
+  The map only stores lowercase letters, so the size is constant
 
-If all counts are ≤ 0, return true
-
-⏱️ Complexity
-Time: O(n + m) — n = ransomNote length, m = magazine length
-
-Space: O(1) — Only lowercase letters, so map size stays constant
-
-💻 Code
-See solution.cpp in this folder.
+## 💻 Code  
+See [`solution.cpp`](./solution.cpp)
