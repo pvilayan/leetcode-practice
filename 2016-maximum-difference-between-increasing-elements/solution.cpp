@@ -16,7 +16,6 @@ public:
     }
     
 };
-
 # Another Solution
 
 class Solution {
