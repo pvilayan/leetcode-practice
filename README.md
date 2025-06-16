@@ -12,5 +12,7 @@ I use this repo to sharpen my problem-solving skills and prepare for technical i
 | # | Title | Folder |
 |--:|:------|:-------|
 | 876 | Middle of the Linked List | [View](./876-middle-of-the-linked-list) |
+| 383 | Ransom Note | [View](./383-ransom-note) |
+
 
 More coming soon...
