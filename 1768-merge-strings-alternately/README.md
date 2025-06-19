@@ -1,60 +1,62 @@
-## Merge Strings Alternately - LeetCode 1768
+# LeetCode Problem: Merge Strings Alternately (Problem 1768)
 
-# Problem Description
+## 📝 Problem Description
 
-Given two strings word1 and word2, merge them by alternating characters from each string one by one. If one string is longer than the other, append the remaining characters of the longer string to the merged result.
+Given two strings `word1` and `word2`, merge them by alternating characters from each string. Start with the first character of `word1`, then the first character of `word2`, and so on. If one string is longer than the other, append the remaining characters to the end of the merged string.
 
-Example:
+---
 
-Input: word1 = "abc", word2 = "pqr"
-Output: "apbqcr"
+## ❗ My Initial Solution (Using `vector<char>`)
 
-My Initial Solution (Using vector<char>)
-
+```cpp
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
         vector<char> merged_total;
         int min_length = min(word1.length(), word2.length());
 
-        // Alternating characters from both words
+        // Alternating characters
         for (int i = 0; i < min_length; i++) {
             merged_total.push_back(word1[i]);
             merged_total.push_back(word2[i]);
         }
 
-        // Append remaining characters from word1
+        // Remaining characters from word1
         for (int i = min_length; i < word1.length(); i++) {
             merged_total.push_back(word1[i]);
         }
 
-        // Append remaining characters from word2
+        // Remaining characters from word2
         for (int i = min_length; i < word2.length(); i++) {
             merged_total.push_back(word2[i]);
         }
 
-        // Convert vector<char> to string
+        // Convert to string and return
         string result(merged_total.begin(), merged_total.end());
         return result;
     }
 };
 
-Issues with This Version
+❌ Issues in Early Versions
+Used a global vector which persisted across test cases in LeetCode.
 
-Declared multiple vectors (merged_total, merged1, merged2) in earlier attempts — overcomplicated the logic.
+Overused multiple vectors (merged1, merged2) when only one was needed.
 
-Tried using i + 2 to get remaining characters — caused incorrect indexing and skipped letters.
+Incorrect indexing with i + 2 caused skipped or out-of-bound characters.
 
-Originally used a class-level vector<char> — led to bugs in LeetCode's multiple test case environment.
+Redundant length checks inside the loop — should have been handled after the main merging.
 
-Final Optimized Solution (Using string)
-
+✅ Final Optimized Solution (Using string)
+cpp
+Copy
+Edit
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
         string result;
         int i = 0, j = 0;
 
+        // Loop until both strings are fully processed
         while (i < word1.length() || j < word2.length()) {
             if (i < word1.length()) result += word1[i++];
             if (j < word2.length()) result += word2[j++];
@@ -63,23 +65,26 @@ public:
         return result;
     }
 };
+✅ Why the Optimized Version is Better
+No extra memory used for vectors — just one string result.
 
-Why This Version is Better
+Handles unequal string lengths smoothly with simple conditionals.
 
-No need for extra vectors.
+Shorter, cleaner, and easier to read.
 
-Uses one loop to handle both alternating and remaining characters.
+Avoids scope or memory issues common with global vectors in LeetCode.
 
-Clean, short, and easy to read.
+# 🧠 Takeaway
+When solving string manipulation problems:
 
-Safer for multiple test cases in LeetCode.
+Favor simplicity when possible.
 
-Time and Space Complexity
+Avoid global variables in online judges like LeetCode.
 
-Time Complexity: O(n + m), where n is the length of word1 and m is the length of word2.
+Think about how the loop will behave with different input lengths.
 
-Space Complexity: O(n + m) for the final result string.
+📚 Time and Space Complexity
+Time Complexity: O(n + m), where n = word1.length() and m = word2.length()
 
-Takeaway
+Space Complexity: O(n + m) for the result string
 
-For string merging problems, using just a string and managing indices directly often results in simpler, safer, and more efficient code.
