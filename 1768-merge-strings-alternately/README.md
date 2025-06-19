@@ -37,17 +37,17 @@ public:
     }
 };
 ```
-
+```
 ❌ Issues in Early Versions
-Used a global vector which persisted across test cases in LeetCode.
+1. Used a global vector which persisted across test cases in LeetCode.
 
-Overused multiple vectors (merged1, merged2) when only one was needed.
+2. Overused multiple vectors (merged1, merged2) when only one was needed.
 
-Incorrect indexing with i + 2 caused skipped or out-of-bound characters.
+3. Incorrect indexing with i + 2 caused skipped or out-of-bound characters.
 
-Redundant length checks inside the loop — should have been handled after the main merging.
-
-✅ Final Optimized Solution (Using string)
+4. Redundant length checks inside the loop — should have been handled after the main merging.
+```
+## ✅ Final Optimized Solution (Using string)
 ```cpp
 class Solution {
 public:
@@ -64,26 +64,30 @@ public:
         return result;
     }
 };
+
+```
+```
 ✅ Why the Optimized Version is Better
-No extra memory used for vectors — just one string result.
+1. No extra memory used for vectors — just one string result.
 
-Handles unequal string lengths smoothly with simple conditionals.
+2. Handles unequal string lengths smoothly with simple conditionals.
 
-Shorter, cleaner, and easier to read.
+3. Shorter, cleaner, and easier to read.
 
-Avoids scope or memory issues common with global vectors in LeetCode.
-
+4. Avoids scope or memory issues common with global vectors in LeetCode.
+```
+```
 # 🧠 Takeaway
 When solving string manipulation problems:
 
-Favor simplicity when possible.
+1. Favor simplicity when possible.
 
-Avoid global variables in online judges like LeetCode.
+2. Avoid global variables in online judges like LeetCode.
 
-Think about how the loop will behave with different input lengths.
-
-📚 Time and Space Complexity
-Time Complexity: O(n + m), where n = word1.length() and m = word2.length()
-
-Space Complexity: O(n + m) for the result string
-
+3. Think about how the loop will behave with different input lengths.
+```
+```
+# 📚 Time and Space Complexity
+1. Time Complexity: O(n + m), where n = word1.length() and m = word2.length()
+2. Space Complexity: O(n + m) for the result string
+```
