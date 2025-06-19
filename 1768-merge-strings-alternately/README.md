@@ -36,6 +36,7 @@ public:
         return result;
     }
 };
+```
 
 ❌ Issues in Early Versions
 Used a global vector which persisted across test cases in LeetCode.
@@ -47,9 +48,7 @@ Incorrect indexing with i + 2 caused skipped or out-of-bound characters.
 Redundant length checks inside the loop — should have been handled after the main merging.
 
 ✅ Final Optimized Solution (Using string)
-cpp
-Copy
-Edit
+```cpp
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
